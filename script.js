@@ -5,6 +5,7 @@ const emojiArr = ["✌","😂","😝","😁","😱","👉","🙌","🍻","🔥",
 const para = document.createElement('p');
 let emoji = '';
 let gridSize = 0;
+let emojiSize = 100;
 
 // create and append buttons
 for(let i = 0; i < emojiArr.length; i+=1) {
@@ -30,15 +31,16 @@ document.addEventListener('keydown', (e) => {createEmojiGrid(emoji, e.key)})
 // create emoji grid
 function createEmojiGrid(emoji, keyPressed) {
   if (keyPressed === "ArrowUp") {
-    gridSize += 1;
+    emojiSize += 10;
   }
   else if (keyPressed == "ArrowDown") {
-    gridSize = gridSize === 0 ?  0 : gridSize - 1;
+    emojiSize = emojiSize === 0 ?  0 : emojiSize - 10;
   }
   else {
     gridSize = keyPressed;
   }
   para.innerText = "";
+  para.style.fontSize = `${emojiSize}%`;
   for(let j = 0; j < gridSize; j +=1) {
     
     for(let i = 0; i < gridSize; i +=1) {
